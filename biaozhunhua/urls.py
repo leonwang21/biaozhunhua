@@ -17,8 +17,11 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 
+from books.views import list_books
+
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', list_books, name='books'),
 ]
 
 if settings.DEBUG:
@@ -26,4 +29,5 @@ if settings.DEBUG:
 
     urlpatterns += [
         path('__debug__/', include(debug_toolbar.urls)),
+
     ]
