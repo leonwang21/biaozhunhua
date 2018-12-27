@@ -17,11 +17,15 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 
-from books.views import list_books
+from books.views import list_books, AuthorList, AuthorDetail, BookDetail
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', list_books, name='books'),
+    path('authors/', AuthorList.as_view(), name="authors"),
+    path('books/<int:pk>', BookDetail.as_view(), name="book-detail"),
+    path('authors/<int:pk>', AuthorDetail.as_view(), name="author-detail"),
+
 ]
 
 if settings.DEBUG:
