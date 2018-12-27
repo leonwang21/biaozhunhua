@@ -1,9 +1,7 @@
-<html>
-<head>
-    <title>An author</title>
-</head>
-<body>
-    {{ author.name }}
+{% extends "base.html" %}
+
+{% block content %}
+    <h2><a href="{% url 'author-detail' author.pk %}">{{ author.name }}</a></h2>
     {% for book in author.books.all %}
         {% if book.review %}
             <div class="book">
@@ -13,6 +11,4 @@
             </div>
         {% endif %}
     {% endfor %}
-</body>
-
-</html>
+{% endblock %}
