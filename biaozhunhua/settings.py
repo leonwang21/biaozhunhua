@@ -128,6 +128,7 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'biaozhunhua', 'static'),
 )
 
+# Auth
 # LOGIN_REDIRECT_URL = 'books'
 LOGOUT_REDIRECT_URL = 'books'
 
