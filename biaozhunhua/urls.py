@@ -18,13 +18,14 @@ from django.urls import path, include
 from django.conf import settings
 
 from books.views import (list_books, AuthorList, AuthorDetail,
-                         BookDetail, review_book, ReviewList)
+                         BookDetail, CreateAuthor, review_book, ReviewList)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', list_books, name='books'),
     path('authors/', AuthorList.as_view(), name="authors"),
     path('books/<int:pk>', BookDetail.as_view(), name="book-detail"),
+    path('authors/add', CreateAuthor.as_view(), name="add-author"),
     path('authors/<int:pk>', AuthorDetail.as_view(), name="author-detail"),
     path('review/', ReviewList.as_view(), name='review-books'),
     path('review/<int:pk>', review_book, name='review-book'),
