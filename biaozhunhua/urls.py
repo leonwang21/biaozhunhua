@@ -15,19 +15,27 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.contrib.auth.decorators import login_required
 from django.conf import settings
 
 from books.views import (list_books, AuthorList, AuthorDetail,
                          BookDetail, CreateAuthor, review_book, ReviewList)
 
 urlpatterns = [
+    # Auth
+    # path('logout/', auth_views.logout_then_login(), name="logout"),
+    path('accounts/', include('django.contrib.auth.urls')),
+
+    # Admin
     path('admin/', admin.site.urls),
+
+    # Custom
     path('', list_books, name='books'),
     path('authors/', AuthorList.as_view(), name="authors"),
     path('books/<int:pk>', BookDetail.as_view(), name="book-detail"),
-    path('authors/add', CreateAuthor.as_view(), name="add-author"),
+    path('authors/add', login_required(CreateAuthor.as_view()), name="add-author"),
     path('authors/<int:pk>', AuthorDetail.as_view(), name="author-detail"),
-    path('review/', ReviewList.as_view(), name='review-books'),
+    path('review/', login_required(ReviewList.as_view()), name='review-books'),
     path('review/<int:pk>', review_book, name='review-book'),
 
 ]
