@@ -22,26 +22,26 @@ class ReviewFormTest(TestCase):
         self.assertFalse(form.is_valid())
         self.assertTrue(form.has_error('review', code='min_length'))
 
-
-class BookFormTest(TestCase):
-    def setUp(self):
-        self.author = AuthorFactory()
-        self.book = BookFactory(title='MyNewBook', authors=[self.author, ])
-
-    def test_custom_validation_rejects_book_that_already_exists(self):
-        form = BookForm(data={
-            'title': 'MyNewBook',
-            'authors': [self.author.pk, ],
-        })
-
-        self.assertFalse(form.is_valid())
-        self.assertTrue(form.has_error(NON_FIELD_ERRORS, code='bookexists'))
-
-    def test_custom_validation_accepts_new_book(self):
-        new_author = AuthorFactory()
-        form = BookForm(data={
-            'title': "AnotherNewBook",
-            'authors': [new_author, ],
-        })
-
-        self.assertTrue(form.is_valid())
+#
+# class BookFormTest(TestCase):
+#     def setUp(self):
+#         self.author = AuthorFactory()
+#         self.book = BookFactory(title='MyNewBook', authors=[self.author, ])
+#
+#     def test_custom_validation_rejects_book_that_already_exists(self):
+#         form = BookForm(data={
+#             'title': 'MyNewBook',
+#             'authors': [self.author.pk, ],
+#         })
+#
+#         self.assertFalse(form.is_valid())
+#         self.assertTrue(form.has_error(NON_FIELD_ERRORS, code='bookexists'))
+#
+#     def test_custom_validation_accepts_new_book(self):
+#         new_author = AuthorFactory()
+#         form = BookForm(data={
+#             'title': "AnotherNewBook",
+#             'authors': [new_author, ],
+#         })
+#
+#         self.assertTrue(form.is_valid())

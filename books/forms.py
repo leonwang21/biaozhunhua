@@ -15,7 +15,7 @@ class ReviewForm(forms.Form):
 
     review = forms.CharField(
         widget=forms.Textarea,
-        min_length=10,
+        min_length=20,
         error_messages={
             'required': 'Please enter your review',
             'min_length': 'Please write at least 10 characters (you have written %(show_value)s)'

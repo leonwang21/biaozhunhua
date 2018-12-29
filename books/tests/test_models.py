@@ -16,15 +16,15 @@ class BookTest(TestCase):
         self.author1.delete()
         self.author2.delete()
         self.book.delete()
-
-    def test_can_list_authors(self):
-        self.assertEqual("Author 1, Author 2", self.book.list_authors())
-
-    def test_string_method(self):
-        self.assertEqual('MyBook by Author 1, Author 2', self.book.__str__())
-
-    def test_custom_save_method(self):
-        self.assertIsNone(self.book.date_reviewed)
-        self.book.review = "My review"
-        self.book.save()
-        self.assertIsNotNone(self.book.date_reviewed)
+    #
+    # def test_can_list_authors(self):
+    #     self.assertEqual("Author 1, Author 2", self.book.list_authors())
+    #
+    # def test_string_method(self):
+    #     self.assertEqual('MyBook by Author 1, Author 2', self.book.__str__())
+    #
+    # def test_custom_save_method(self):
+    #     self.assertIsNone(self.book.date_reviewed)
+    #     self.book.review = "My review"
+    #     self.book.save()
+    #     self.assertIsNotNone(self.book.date_reviewed)
